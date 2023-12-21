@@ -9,7 +9,7 @@
 
 	const { className } = $props<CardProps>();
 
-	const finalClass = twMerge(DEFAULT_CLASS, className);
+	let finalClass = $derived(twMerge(DEFAULT_CLASS, className));
 </script>
 
 <div class={finalClass}>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
+	import { twMerge } from 'tailwind-merge';
 
 	type InputProps = {
 		autocapitalize?: string;
@@ -47,9 +48,13 @@
 	function useType(node: HTMLInputElement) {
 		node.type = type;
 	}
+
+	const DEFAULT_CLASS = 'group';
+
+	let finalClass = $derived(twMerge(DEFAULT_CLASS, className));
 </script>
 
-<div class="group{className ? ` ${className}` : ''}">
+<div class={finalClass}>
 	<label
 		for={name}
 		class="block text-sm font-medium"
