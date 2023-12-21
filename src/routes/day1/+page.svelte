@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AddSubtractButton from '$lib/components/AddSubtractButton.svelte';
 	import Badge from '$lib/components/Badge.svelte';
 	import Card from '$lib/components/Card.svelte';
 	import Input from '$lib/components/Input.svelte';
@@ -15,7 +16,7 @@
 
 {#each theList as person, i}
 	<Card className="max-w-lg m-auto mb-4 hover:shadow-xl transition-all hover:scale-[101%]">
-		<div slot="title" class="flex flex-row items-center justify-between">
+		<div slot="title" class="flex flex-row items-center justify-between mb-4">
 			<h3>{person.name}</h3>
 			{#if person.tally <= 0}
 				<Badge type="danger" label="Naughty" />
@@ -37,13 +38,15 @@
                 if (target && target instanceof HTMLInputElement) {
                     updatePerson(i, parseInt(target.value))}}}
 			/>
-			<button
-				class="mt-5 rounded-full bg-blue-600 text-white flex items-center justify-center min-w-10 min-h-10 text-2xl"
-				on:click={() => updatePerson(i, person.tally + 1)}>+</button
+			<AddSubtractButton
+				type="add"
+				on:click={() => updatePerson(i, person.tally + 1)}
+				className="mt-5">+</AddSubtractButton
 			>
-			<button
-				class="mt-5 rounded-full bg-red-600 text-white flex items-center justify-center min-w-10 min-h-10 text-2xl"
-				on:click={() => updatePerson(i, person.tally - 1)}>-</button
+			<AddSubtractButton
+				type="subtract"
+				on:click={() => updatePerson(i, person.tally - 1)}
+				className="mt-5">-</AddSubtractButton
 			>
 		</div>
 	</Card>
