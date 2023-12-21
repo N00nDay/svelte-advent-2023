@@ -12,7 +12,9 @@
 		placeholder?: string;
 		error?: boolean;
 		value?: string | number;
-		label: string;
+		label?: string;
+		min?: number;
+		max?: number;
 		type:
 			| 'text'
 			| 'number'
@@ -42,7 +44,9 @@
 		value,
 		label,
 		type,
-		className
+		className,
+		min,
+		max
 	} = $props<InputProps>();
 
 	function useType(node: HTMLInputElement) {
@@ -55,12 +59,14 @@
 </script>
 
 <div class={finalClass}>
-	<label
-		for={name}
-		class="block text-sm font-medium"
-		class:text-red-600={error}
-		class:text-gray-600={!error}>{label}</label
-	>
+	{#if label}
+		<label
+			for={name}
+			class="block text-sm font-medium"
+			class:text-red-600={error}
+			class:text-gray-600={!error}>{label}</label
+		>
+	{/if}
 	<div
 		class="mt-1 relative rounded-md h-[2.5rem]"
 		class:text-danger={error}
@@ -75,6 +81,8 @@
 			{readonly}
 			{tabindex}
 			{disabled}
+			{min}
+			{max}
 			class="block h-[2.5rem] w-full px-3 border outline-none focus:outline-none sm:text-sm rounded-md bg-white outline-offset-0 placeholder-gray-300 placeholder-opacity-80"
 			class:border-gray-300={!error}
 			class:border-red-600={error}
