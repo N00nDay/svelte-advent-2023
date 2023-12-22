@@ -19,11 +19,11 @@
 		<div slot="title" class="flex flex-row items-center justify-between mb-4">
 			<h3>{person.name}</h3>
 			{#if person.tally <= 0}
-				<Badge type="danger" label="Naughty" />
+				<Badge type="danger">Naughty</Badge>
 			{:else if person.tally <= 15}
-				<Badge type="warning" label="Kind Of Naughty" />
+				<Badge type="warning">Kind Of Naughty</Badge>
 			{:else}
-				<Badge type="success" label="Nice" />
+				<Badge type="success">Nice</Badge>
 			{/if}
 		</div>
 		<div class="flex flex-row items-center justify-between gap-2 w-full mb-4">

@@ -3,11 +3,10 @@
 
 	type BadgeProps = {
 		type: 'danger' | 'warning' | 'success' | 'info';
-		label: string;
 		className?: string;
 	};
 
-	let { type = 'info', label, className } = $props<BadgeProps>();
+	let { type = 'info', className } = $props<BadgeProps>();
 
 	const DEFAULT_CLASS =
 		'flex items-center justify-center py-0.5 font-medium rounded-full px-2 text-xs text-white';
@@ -29,5 +28,5 @@
 	class:bg-green-600={type === 'success'}
 	class:bg-blue-600={type === 'info'}
 >
-	{label}
+	<slot />
 </div>
